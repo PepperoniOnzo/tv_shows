@@ -8,15 +8,16 @@ class Genres extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return context.read<AppView>().selectedFilm.genres.isNotEmpty
+    final appView = context.read<AppView>();
+
+    return appView.selectedFilm.genres.isNotEmpty
         ? ListView.builder(
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            itemCount: context.read<AppView>().selectedFilm.genres.length,
+            itemCount: appView.selectedFilm.genres.length,
             itemBuilder: (context, index) {
-              return GenreContainer(
-                  genre: context.read<AppView>().selectedFilm.genres[index]);
+              return GenreContainer(genre: appView.selectedFilm.genres[index]);
             },
           )
         : const GenreContainer(genre: "No genres available");

@@ -10,10 +10,9 @@ class ListScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const <Flexible>[
-          Flexible(flex: 2, child: SearchBar()),
-          Flexible(flex: 8, child: SearchResults())
+        children: const <Expanded>[
+          Expanded(flex: 2, child: SearchBar()),
+          Expanded(flex: 14, child: SearchResults())
         ],
       ),
     );

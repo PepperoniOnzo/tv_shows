@@ -12,6 +12,8 @@ class FilmDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appView = context.read<AppView>();
+
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
       child: Column(
@@ -21,7 +23,7 @@ class FilmDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Text(context.read<AppView>().selectedFilm.name,
+                child: Text(appView.selectedFilm.name,
                     style: Theme.of(context).textTheme.headlineMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis),
@@ -30,7 +32,7 @@ class FilmDetails extends StatelessWidget {
                 onPressed: () async {
                   launchUrl(
                       mode: LaunchMode.externalApplication,
-                      Uri.parse(context.read<AppView>().selectedFilm.url));
+                      Uri.parse(appView.selectedFilm.url));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.backgroundSecondary,
@@ -47,7 +49,7 @@ class FilmDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Icon(Icons.star, color: AppColors.star),
-                  Text(context.read<AppView>().selectedFilm.rating.toString(),
+                  Text(appView.selectedFilm.rating.toString(),
                       style: Theme.of(context).textTheme.headlineSmall!.apply(
                             color: AppColors.star,
                           )),
@@ -55,7 +57,7 @@ class FilmDetails extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text(context.read<AppView>().selectedFilm.status,
+                child: Text(appView.selectedFilm.status,
                     style: Theme.of(context).textTheme.bodyLarge!.apply(
                           color: AppColors.textSecondary,
                         )),
@@ -67,8 +69,7 @@ class FilmDetails extends StatelessWidget {
               child: const Expanded(child: Genres())),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-                context.read<AppView>().selectedFilm.summary ?? 'No summary',
+            child: Text(appView.selectedFilm.summary ?? 'No summary',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 15,
                 style: Theme.of(context).textTheme.titleMedium),

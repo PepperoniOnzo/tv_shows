@@ -34,6 +34,9 @@ class MyApp extends StatelessWidget {
         inputDecorationTheme: const InputDecorationTheme(
           filled: true,
           fillColor: AppColors.backgroundSecondary,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.textSecondary),
+          ),
           prefixIconColor: AppColors.textSecondary,
           hintStyle: TextStyle(color: AppColors.textSecondary),
         ),
