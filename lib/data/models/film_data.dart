@@ -21,21 +21,20 @@ class FilmData {
 
   factory FilmData.fromJson(Map<String, dynamic> json) {
     return FilmData(
-      image: json['show']['image'] != null
-          ? json['show']['image']['medium']
-          : null,
-      name: json['show']['name'],
-      genres: List<String>.from(json['show']['genres']),
-      rating: json['show']['rating']['average'] != null
-          ? json['show']['rating']['average'].toDouble()
-          : 0.0,
-      url: json['show']['url'],
-      status: json['show']['status'],
-      schedule: {
-        json['show']['schedule']['time']:
-            List<String>.from(json['show']['schedule']['days'])
-      },
-      summary: json['show']['summary'],
-    );
+        image: json['show']['image'] != null
+            ? json['show']['image']['medium']
+            : null,
+        name: json['show']['name'],
+        genres: List<String>.from(json['show']['genres']),
+        rating: json['show']['rating']['average'] != null
+            ? json['show']['rating']['average'].toDouble()
+            : 0.0,
+        url: json['show']['url'],
+        status: json['show']['status'],
+        schedule: {
+          json['show']['schedule']['time']:
+              List<String>.from(json['show']['schedule']['days'])
+        },
+        summary: json['show']['summary']?.replaceAll(RegExp(r'<[^>]*>'), ''));
   }
 }
