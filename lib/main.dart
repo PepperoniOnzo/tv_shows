@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tv_shows/data/constants/app_colors.dart';
 import 'package:tv_shows/data/constants/routes.dart';
 
 import 'screens/screens.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: AppColors.backgroundPrimary,
         primarySwatch: Colors.blue,
       ),
       initialRoute: AppRoutes.home,
