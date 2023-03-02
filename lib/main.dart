@@ -25,6 +25,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.backgroundPrimary,
         primarySwatch: Colors.blue,
+        inputDecorationTheme: const InputDecorationTheme(
+          filled: true,
+          fillColor: AppColors.backgroundSecondary,
+          prefixIconColor: AppColors.textSecondary,
+          hintStyle: TextStyle(color: AppColors.textSecondary),
+        ),
       ),
       initialRoute: AppRoutes.home,
       routes: {
