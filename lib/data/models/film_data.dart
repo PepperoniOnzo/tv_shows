@@ -1,27 +1,29 @@
 class FilmData {
-  final String image;
+  final String? image;
   final String name;
   final List<String> genres;
   final double rating;
   final String url;
   final String status;
   final Map<String, List<String>> schedule;
-  final String summary;
+  final String? summary;
 
   FilmData({
-    required this.image,
+    this.image,
     required this.name,
     required this.genres,
     required this.rating,
     required this.url,
     required this.status,
     required this.schedule,
-    required this.summary,
+    this.summary,
   });
 
   factory FilmData.fromJson(Map<String, dynamic> json) {
     return FilmData(
-      image: json['show']['image']['medium'],
+      image: json['show']['image'] != null
+          ? json['show']['image']['medium']
+          : null,
       name: json['show']['name'],
       genres: List<String>.from(json['show']['genres']),
       rating: json['show']['rating']['average'] != null

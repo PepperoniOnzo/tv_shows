@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tv_shows/data/constants/app_colors.dart';
+
+import '../../views/app_view.dart';
 
 class SearchBar extends StatefulWidget {
   const SearchBar({super.key});
@@ -25,11 +28,14 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: TextField(
-        style: TextStyle(color: AppColors.textPrimary),
-        decoration: InputDecoration(
+        controller: _textController,
+        onChanged: (value) {
+          context.read<AppView>().setFilmName(value);
+        },
+        decoration: const InputDecoration(
             hintText: 'Search...', prefixIcon: Icon(Icons.search)),
       ),
     );
