@@ -22,62 +22,70 @@ class FilmList extends StatelessWidget {
           itemBuilder: (context, index) {
             final String? imageUri =
                 context.watch<AppView>().films[index].image;
-            // TODO - default image
-            return Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(bottom: 10.0),
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        opacity: 0.8,
-                        image: NetworkImage(imageUri!),
-                        fit: BoxFit.cover,
+            return GestureDetector(
+              onTap: () {
+                context.read<AppView>().setSelectedFilm(index);
+                Navigator.pushNamed(context, '/details');
+              },
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 10.0),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          opacity: 0.8,
+                          image: imageUri != null
+                              //TODO loadingBuilder
+                              ? NetworkImage(imageUri)
+                              : Image.asset('assets/empty_poster.jpg').image,
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                            context
-                                .watch<AppView>()
-                                .films[index]
-                                .rating
-                                .toString(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.star,
-                              shadows: [
-                                Shadow(
-                                  color: AppColors.backgroundPrimary
-                                      .withOpacity(0.5),
-                                  offset: const Offset(0.0, 0.0),
-                                  blurRadius: 5.0,
-                                ),
-                              ],
-                            )),
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                              context
+                                  .watch<AppView>()
+                                  .films[index]
+                                  .rating
+                                  .toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall!
+                                  .copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.star,
+                                shadows: [
+                                  Shadow(
+                                    color: AppColors.backgroundPrimary
+                                        .withOpacity(0.5),
+                                    offset: const Offset(0.0, 0.0),
+                                    blurRadius: 5.0,
+                                  ),
+                                ],
+                              )),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      context.watch<AppView>().films[index].name,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        context.watch<AppView>().films[index].name,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           }),
     );

@@ -16,6 +16,8 @@ class AppView extends ChangeNotifier {
 
   String filmName = '';
 
+  late FilmData selectedFilm;
+
   void setFilmName(String name) {
     filmName = name;
 
@@ -55,5 +57,9 @@ class AppView extends ChangeNotifier {
     isLoading = false;
 
     notifyListeners();
+  }
+
+  void setSelectedFilm(int index) {
+    selectedFilm = films[index];
   }
 }
