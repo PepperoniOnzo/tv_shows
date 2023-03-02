@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tv_shows/data/constants/app_colors.dart';
 
 import '../../views/app_view.dart';
 

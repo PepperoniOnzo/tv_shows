@@ -29,6 +29,7 @@ class FilmDetails extends StatelessWidget {
               ElevatedButton(
                 onPressed: () async {
                   launchUrl(
+                      mode: LaunchMode.externalApplication,
                       Uri.parse(context.read<AppView>().selectedFilm.url));
                 },
                 style: ElevatedButton.styleFrom(
@@ -68,7 +69,9 @@ class FilmDetails extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(
                 context.read<AppView>().selectedFilm.summary ?? 'No summary',
-                style: Theme.of(context).textTheme.bodyLarge),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 15,
+                style: Theme.of(context).textTheme.titleMedium),
           ),
           const Divider(
             color: AppColors.backgroundSecondary,
