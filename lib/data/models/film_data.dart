@@ -1,5 +1,6 @@
 class FilmData {
   final String? image;
+  final String? imageOriginal;
   final String name;
   final List<String> genres;
   final double rating;
@@ -10,6 +11,7 @@ class FilmData {
 
   FilmData({
     this.image,
+    this.imageOriginal,
     required this.name,
     required this.genres,
     required this.rating,
@@ -23,6 +25,9 @@ class FilmData {
     return FilmData(
         image: json['show']['image'] != null
             ? json['show']['image']['medium']
+            : null,
+        imageOriginal: json['show']['image'] != null
+            ? json['show']['image']['original']
             : null,
         name: json['show']['name'],
         genres: List<String>.from(json['show']['genres']),

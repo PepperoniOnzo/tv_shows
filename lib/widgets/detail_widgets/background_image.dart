@@ -9,7 +9,8 @@ class BackImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String? imageUri = context.watch<AppView>().selectedFilm.image;
+    final String? imageUri =
+        context.watch<AppView>().selectedFilm.imageOriginal;
 
     return Stack(children: [
       Container(

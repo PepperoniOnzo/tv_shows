@@ -40,7 +40,6 @@ class FilmList extends StatelessWidget {
                           image: DecorationImage(
                             opacity: 0.8,
                             image: imageUri != null
-                                //TODO loadingBuilder
                                 ? Image.network(imageUri).image
                                 : Image.asset('assets/empty_poster.jpg').image,
                             fit: BoxFit.cover,
