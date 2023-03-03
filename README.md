@@ -1,16 +1,20 @@
-# tv_shows
+# TV Shows App
 
-A new Flutter project.
+App for searching and viewing details of TV shows.
 
-## Getting Started
+State management is handled by `Provider` and `http` package is used for making http requests. For opening links in browser, `url_launcher` package is used.
 
-This project is a starting point for a Flutter application.
+Api used: [TV Maze](https://www.tvmaze.com/api) with endpoint `search/shows`.
 
-A few resources to get you started if this is your first Flutter project:
+## Project Structure
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```text
+assets/             # Default poster image
+lib/
+|- data/            # Film model and constants
+|- screens/         # Two main screens
+|- services/        # Http service
+|- views/           # Business logic (View)
+|- widgets/         # Widgets
+|- main.dart        # Entry point
+```
