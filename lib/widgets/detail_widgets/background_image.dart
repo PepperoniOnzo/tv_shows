@@ -17,7 +17,12 @@ class BackImage extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: imageUri != null
-                ? NetworkImage(imageUri)
+                ? Image.network(
+                    imageUri,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset('assets/empty_poster.jpg');
+                    },
+                  ).image
                 : Image.asset('assets/empty_poster.jpg').image,
             fit: BoxFit.cover,
           ),
