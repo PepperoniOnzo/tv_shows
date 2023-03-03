@@ -66,7 +66,7 @@ class FilmDetails extends StatelessWidget {
           ),
           Container(
               constraints: const BoxConstraints(maxHeight: 50),
-              child: const Expanded(child: Genres())),
+              child: const Genres()),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(appView.selectedFilm.summary ?? 'No summary',
