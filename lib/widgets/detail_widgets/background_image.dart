@@ -9,14 +9,20 @@ class BackImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String? imageUri = context.watch<AppView>().selectedFilm.image;
+    final String? imageUri =
+        context.watch<AppView>().selectedFilm.imageOriginal;
 
     return Stack(children: [
       Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: imageUri != null
-                ? NetworkImage(imageUri)
+                ? Image.network(
+                    imageUri,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset('assets/empty_poster.jpg');
+                    },
+                  ).image
                 : Image.asset('assets/empty_poster.jpg').image,
             fit: BoxFit.cover,
           ),

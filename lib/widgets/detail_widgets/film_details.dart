@@ -56,7 +56,7 @@ class FilmDetails extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.only(top: 10, bottom: 10, right: 10),
                 child: Text(appView.selectedFilm.status,
                     style: Theme.of(context).textTheme.bodyLarge!.apply(
                           color: AppColors.textSecondary,
@@ -66,7 +66,7 @@ class FilmDetails extends StatelessWidget {
           ),
           Container(
               constraints: const BoxConstraints(maxHeight: 50),
-              child: const Expanded(child: Genres())),
+              child: const Genres()),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(appView.selectedFilm.summary ?? 'No summary',
